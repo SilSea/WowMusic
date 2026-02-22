@@ -1,376 +1,488 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- LinkCss -->
-    <link rel="icon" href="img/icon/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>WOWMusic</title>
+    <link rel="icon" href="./assets/imgs/icon/icon.png" type="image/x-icon">
+    
+    <script src="./assets/js/tailwindcss_3.4.17.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        wowred: '#e50914',
+                        wowdark: '#121212',
+                        wowpanel: '#181818',
+                        wowhover: '#282828',
+                    }
+                }
+            }
+        }
+    </script>
+
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/sharp-solid.css">
-    <link rel="stylesheet" href="css/web.css">
-    <!-- LinkJs -->
-    <script src="js/jquery-3.6.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/sweetalert2.all.min.js"></script>
-    <script src="js/web.js"></script>
-    <title>WOWMusic</title>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* ปรับแต่ง Range Slider */
+            input[type=range] {
+                @apply h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer;
+            }
+            /* สีของหัว Slider (Thumb) */
+            input[type=range]::-webkit-slider-thumb {
+                @apply appearance-none w-3 h-3 bg-white rounded-full shadow-sm transition-all hover:scale-125 hover:bg-wowred;
+            }
+            input[type=range]::-moz-range-thumb {
+                @apply appearance-none w-3 h-3 bg-white rounded-full shadow-sm transition-all hover:scale-125 hover:bg-wowred;
+            }
+            /* สีของแถบที่เล่นไปแล้ว */
+            input[type=range] {
+                 @apply accent-wowred;
+            }
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-black">
-    <!-- Navbar Sm -->
-    <nav class="nav-bar d-flex d-xl-none">
-      <a class="nav-brand-sm d-none d-sm-flex" href=""><img class="nav-img-brand-sm" src="img/icon/icon.png" alt="WOWMusic"><span class="font-brand-sm"> WOWMusic</span></a>
-      <a class="nav-brand-sm d-flex d-md-none" href=""><img class="nav-img-brand-xs" src="img/icon/icon.png" alt="WOWMusic"><span class="font-brand-sm"></span></a>
-      <ul class="nav-container">
-          <li class="nav-item"></li>
-          <li class="nav-item">
-              <a class="nav-link" href="index.html"><i class="fa-sharp fa-solid fa-house"></i></a>
-              <a class="nav-link" href="library.html"><i class="fa-sharp fa-solid fa-books"></i></a>
-              <a class="nav-link" href="likesong.html"><i class="fa-sharp fa-solid fa-thumbs-up"></i></a>
-          </li>
-          <li class="nav-item">
-            <div class="dropdown account">
-              <a class="btn-account dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#info" href="">จัดทำโดย</a></li>
-                <li><a class="dropdown-item" href="info.html">อ้างอิงจาก</a></li>
-              </ul>
-            </div>
-          </li>
-      </ul>
+<body class="bg-wowdark text-gray-200 font-sans pb-28"> <nav class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
+        <a href="#" class="flex items-center space-x-2 group">
+            <img src="./assets/imgs/icon/icon.png" alt="WOWMusic" class="h-8 w-8 transition-transform group-hover:rotate-12">
+            <span class="font-bold text-xl tracking-wider text-white"><span class="text-wowred">WOW</span>Music</span>
+        </a>
+
+        <div class="flex items-center space-x-6">
+            <a href="./index.html" class="text-gray-400 hover:text-white transition-colors" title="หน้าแรก">
+                <i class="fa-sharp fa-solid fa-house text-xl"></i>
+            </a>
+            <button id="btn-info-modal" class="text-gray-400 hover:text-white transition-colors" title="ข้อมูลผู้จัดทำ">
+                 <i class="fa-solid fa-user text-xl"></i>
+            </button>
+        </div>
     </nav>
-    <!-- Navbar Lg -->
-    <nav class="nav-bar d-none d-xl-flex">
-        <a class="nav-brand" href=""><img class="nav-img-brand" src="img/icon/icon.png" alt="WOWMusic"><span class="font-brand"> WOWMusic</span></a>
-        <ul class="nav-container">
-            <li class="nav-item"></li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html"><i class="fa-sharp fa-solid fa-house"></i> Home</a>
-                <a class="nav-link" href="library.html"><i class="fa-sharp fa-solid fa-books"></i> Library</a>
-                <a class="nav-link" href="searchsong.html"><i class="fa-solid fa-magnifying-glass"></i> Music Category</a>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown account">
-                <a class="btn-account dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fa-solid fa-user"></i> ข้อมูลผู้จัดทำ
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#info" href="">จัดทำโดย</a></li>
-                  <li><a class="dropdown-item" href="info.html">อ้างอิงจาก</a></li>
-                </ul>
-              </div>
-            </li>
-        </ul>
-    </nav>
-    <!-- Modal -->
-    <div class="modal fade" id="info" tabindex="-1" aria-labelledby="infoLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center" id="infoLabel">จัดทำโดย</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <span class="text-muted ms-5 me-5">65502100005-5 นายณัฐวุฒิ พูลเขตต์</span>
-            <a class="text-muted fs-4" target="_blank" href="https://github.com/SilSea"><i class="fa-brands fa-github"></i></a>
-            <a class="text-muted fs-4" target="_blank" href="https://www.instagram.com/silsea_nut/"><i class="fa-brands fa-instagram"></i></a>
-            <a class="text-muted fs-4" target="_blank" href="https://web.facebook.com/NattawutPoolkhet"><i class="fa-brands fa-facebook"></i></a>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Content -->
-    <div id="content" class="content">
-        <div class="head-content">มิวสิกวิดีโอแนะนำ</div>
-        <!-- List -->
-        <div class="row-content">
-            <div class="col-content"></div>
-            <div class="col-contentcenter">
-                <a class="card-content" onclick="selectmusic('m87');">
-                    <img class="card-img-content" src="img/music/m87.jpg">
-                </a>
-                <a class="card-content" onclick="selectmusic('ireallywanttostayatyourhouse');">
-                    <img class="card-img-content" src="img/music/ireallywanttostayatyourhouse.jpg">
-                </a>
-                <a class="card-content" onclick="selectmusic('GeorgeKarizakisNoRiderSystem');">
-                    <img class="card-img-content" src="img/music/GeorgeKarizakisNoRiderSystem.jpg">
-                </a>
-                <a class="card-content" onclick="selectmusic('volcano');">
-                    <img class="card-img-content" src="img/music/volcano.jpg">
-                </a>
-                <a class="card-content" onclick="selectmusic('TRUSTLAST');">
-                    <img class="card-img-content" src="img/music/TRUSTLAST.jpg">
-                </a>
-            </div>
-            <div class="col-content"></div>
-        </div>
-        <div class="row-content">
-          <div class="col-content"></div>
-          <div class="col-contentcenter">
-              <a class="card-content" onclick="selectmusic('Cherryish');">
-                  <img class="card-img-content" src="img/music/Cherryish.jpg">
-              </a>
-              <a class="card-content" onclick="selectmusic('TsumitoBatsutoAngura');">
-                  <img class="card-img-content" src="img/music/TsumitoBatsutoAngura.jpg">
-              </a>
-              <a class="card-content" onclick="selectmusic('Kaibutsu');">
-                  <img class="card-img-content" src="img/music/Kaibutsu.jpg">
-              </a>
-              <a class="card-content" onclick="selectmusic('GenesisofAquarion');">
-                  <img class="card-img-content" src="img/music/GenesisofAquarion.jpg">
-              </a>
-              <a class="card-content" onclick="selectmusic('OneLastKiss');">
-                  <img class="card-img-content" src="img/music/OneLastKiss.jpg">
-              </a>
-          </div>
-          <div class="col-content"></div>
-      </div>
-    </div>
-    <!-- ShowVideo -->
-    <div id="videocontent" class="video-content-hide">
-        <div style="text-align: center;width: 100%;height: 100%;padding-top: 5%;">
-          <iframe id="video" width="1000" height="600" src-="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-    <!-- Player -->
-    <div class="player-container">
-        <audio id="music" src="" ontimeupdate="updateTrackTime(this);"></audio>
-        <!-- MusicInfo -->
-        <div class="player-colleft">
-            <img id="img-player-music-sm" class="img-player-music-sm d-flex d-lg-none" src=""></i>
-            <img id="img-player-music" class="img-player-music d-none d-lg-flex " src=""></i>
-            <div id="musicname" class="music-name"></div>
-        </div>
-        <div class="player-col">
-            <div class="player-control">
-                <div class="player-row">
-                  <!-- Random -->
-                  <i id="random-icon" class="fa-solid fa-shuffle pad" onclick="randommusic();"></i>
-                  <!-- Back -->
-                  <!-- <i id="back-icon" class="fa-solid fa-backward-step pad" onclick="back();"></i> -->
-                  <!-- Play -->
-                  <i id="playpause-icon" class="fa-sharp fa-soild fa-circle-play pad p-active p-size" onclick="playaudio();"></i>
-                  <!-- Forward -->
-                  <!-- <i id="forward-icon" class="fa-solid fa-forward-step pad" onclick="forward();"></i> -->
-                  <!-- Loop -->
-                  <i id="repeat-icon" class="fa-sharp fa-solid fa-repeat pad" onclick="loop();"></i>
+
+    <main class="container mx-auto px-4 py-8 max-w-screen-xl">
+        <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-wowred pl-3">เพลงแนะนำ</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="m87">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/m87.jpg" alt="M87" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg transform scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
-                <div class="player-row">
-                    <span id="currentTime" class="time">00:00</span>
-                    <input id="current-time" class="player-slide" type="range" max="100" value="0" oninput="slide(this);">
-                    <span id="duration" class="time"></span>
+                <h3 class="text-white font-semibold truncate">M87</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="ireallywanttostayatyourhouse">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/ireallywanttostayatyourhouse.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
                 </div>
+                <h3 class="text-white font-semibold truncate">I Really Want to Stay...</h3>
+                <p class="text-sm text-gray-400 truncate">Cyberpunk</p>
+            </div>
+
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="GeorgeKarizakisNoRiderSystem">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/GeorgeKarizakisNoRiderSystem.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">No Rider System</h3>
+                <p class="text-sm text-gray-400 truncate">George Karizakis</p>
+            </div>
+
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="volcano">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/volcano.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">Volcano</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="TRUSTLAST">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/TRUSTLAST.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">TRUSTLAST</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+            
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="Cherryish">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/Cherryish.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">Cherryish</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="TsumitoBatsutoAngura">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/TsumitoBatsutoAngura.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">Tsumi to Batsu to Angura</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="Kaibutsu">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/Kaibutsu.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">Kaibutsu</h3>
+                <p class="text-sm text-gray-400 truncate">YOASOBI</p>
+            </div>
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="GenesisofAquarion">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/GenesisofAquarion.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">Genesis of Aquarion</h3>
+                <p class="text-sm text-gray-400 truncate">Artist Name</p>
+            </div>
+             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="OneLastKiss">
+                <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
+                    <img src="./assets/imgs/music/OneLastKiss.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                </div>
+                <h3 class="text-white font-semibold truncate">One Last Kiss</h3>
+                <p class="text-sm text-gray-400 truncate">Utada Hikaru</p>
             </div>
         </div>
-        <div class="player-colright">
-            <div class="player-rowv">
-                <!-- Volume -->
-                <i id="volumemute-icon" class="fa-solid fa-volume pad-v" onclick="mute();"></i>
-                <input id="volume" class="volume" type="range" max="100" value="5" width="100%" oninput="volume();">
-                <i id="videobutton" class="fa-sharp fa-solid fa-circle-caret-up pad-v" onclick="showhidevideo();"></i>
+    </main>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-[#181818] border-t border-[#282828] px-4 py-3 flex items-center justify-between z-50 h-24">
+        
+        <audio id="audio-source" preload="metadata"></audio>
+
+        <div class="flex items-center w-1/4 min-w-[140px] mr-2">
+            <img id="player-img" src="./assets/imgs/icon/icon.png" alt="Cover" class="h-14 w-14 rounded shadow-lg object-cover hidden sm:block">
+            <div class="ml-0 sm:ml-4 overflow-hidden">
+                <h4 id="player-title" class="text-white font-semibold text-sm truncate hover:underline cursor-pointer">เลือกเพลงเพื่อเล่น</h4>
+                <p id="player-artist" class="text-gray-400 text-xs truncate hover:underline cursor-pointer">WOWMusic</p>
             </div>
+        </div>
+
+        <div class="flex flex-col items-center w-2/4 max-w-2xl">
+            <div class="flex items-center space-x-6 mb-1">
+                <button id="btn-shuffle" class="text-gray-400 hover:text-white transition-colors" title="สุ่มเพลง">
+                    <i class="fa-solid fa-shuffle text-lg"></i>
+                </button>
+                <button class="text-gray-300 hover:text-white transition-colors hidden md:block">
+                     <i class="fa-solid fa-backward-step text-xl"></i>
+                </button>
+                <button id="btn-play-pause" class="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center hover:scale-105 transition-transform">
+                    <i id="play-icon" class="fa-solid fa-play ml-1 text-xl"></i> </button>
+                 <button class="text-gray-300 hover:text-white transition-colors hidden md:block">
+                    <i class="fa-solid fa-forward-step text-xl"></i>
+               </button>
+                <button id="btn-loop" class="text-gray-400 hover:text-white transition-colors" title="เล่นซ้ำ">
+                    <i class="fa-solid fa-repeat text-lg"></i>
+                </button>
+            </div>
+
+            <div class="w-full flex items-center space-x-3 text-xs text-gray-400">
+                <span id="current-time-text">0:00</span>
+                <div class="relative w-full h-1 group">
+                     <input type="range" id="progress-bar" class="absolute inset-0 w-full h-1 opacity-0 cursor-pointer z-10" value="0" step="0.1">
+                     <div class="w-full h-1 bg-gray-600 rounded-full overflow-hidden">
+                         <div id="progress-fill" class="h-full bg-wowred w-0 transition-all duration-100 ease-linear group-hover:bg-red-500"></div>
+                     </div>
+                </div>
+                <span id="duration-time-text">0:00</span>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-end w-1/4 min-w-[140px] space-x-3 pl-2">
+            <button id="btn-mute" class="text-gray-400 hover:text-white transition-colors" title="ปิดเสียง">
+                <i id="volume-icon" class="fa-solid fa-volume-high text-lg w-6"></i>
+            </button>
+            <input type="range" id="volume-bar" class="w-20 md:w-28 accent-wowred" min="0" max="1" step="0.01" value="0.5">
+        </div>
+
+    </div>
+
+    <div id="info-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-wowpanel rounded-2xl border border-white/10 p-6 w-full max-w-md text-center shadow-2xl transform transition-all scale-95" id="modal-content">
+            <h3 class="text-2xl font-bold text-white mb-4">จัดทำโดย</h3>
+            <div class="mb-6">
+                <img src="./assets/imgs/profile/profile.jpg" alt="Logo" class="w-20 h-20 mx-auto mb-4 rounded-full shadow-lg border-2 border-wowred">
+                <p class="text-lg text-white font-medium">นายณัฐวุฒิ พูลเขตต์</p>
+            </div>
+            <div class="flex justify-center space-x-6 text-2xl mb-8">
+                <a href="https://github.com/SilSea" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/silsea_nut/" target="_blank" class="text-gray-400 hover:text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://web.facebook.com/NattawutPoolkhet" target="_blank" class="text-gray-400 hover:text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <button id="btn-close-modal" class="bg-wowred hover:bg-red-700 text-white px-6 py-2 rounded-full font-semibold transition-colors w-full">ปิดหน้าต่าง</button>
         </div>
     </div>
+
     <script>
-      // DefaultVolume
-      var defaultvolume = 50;
-      // DefaultDurationMusic
-      document.getElementById('duration').innerHTML = "00:00";
-      // ReadyLoad
-      $(document).ready(function() {
-        // LoadDurationMusic
-        var audio = $("#music")[0];
-        $("#music").on("loadedmetadata", function() {
-            var duration = Math.floor(audio.duration);
-            if(duration != ""){
-                document.getElementById("duration").innerHTML = formatSecondsAsTime(duration);
-            }
-        });
-        
-        // LoadImgDefault
-        var img = document.getElementById('img-player-music');
-        var img2 = document.getElementById('img-player-music-sm');
-        img2.src = "img/icon/icon.png";
-        img.src = "img/icon/icon.png";
+        // Data & State
+        const API_BASE_URL = 'http://api.kumaisekai.online/api/audio/';
 
-      });
-      // ShowHideVideo
-      function showhidevideo(){
-          var videocontent = document.getElementById("videocontent");
-          var button = document.getElementById("videobutton");
-          if(button.className == "fa-sharp fa-solid fa-circle-caret-up pad-v"){
-            button.className = "fa-sharp fa-solid fa-circle-caret-down pad-v";
-            videocontent.className = "video-content-show";
-          }else if(button.className == "fa-sharp fa-solid fa-circle-caret-down pad-v"){
-            button.className = "fa-sharp fa-solid fa-circle-caret-up pad-v";
-            videocontent.className = "video-content-hide";
-          }
-      }
-      // RandomMusic
-      function randommusic(){
-          selectmusic(listmusicnum[Math.floor(Math.random() * 9)]);
-      }
-      // SelectMusic
-      function selectmusic(namemusic){
-        var changeaudio = document.getElementById('music');
-        var playicon = document.getElementById('playpause-icon');
-        var volume = document.getElementById('volume');
-        var changeimg = document.getElementById('img-player-music');
-        var changeimgsm = document.getElementById('img-player-music-sm');
-        var musicname = document.getElementById('musicname');
-        var video = document.getElementById("video");
+        // ข้อมูลเพลง
+        const musicData = {
+            'm87': { name: 'M87', id: '185pFuejPuQnO-CVF9vAmFdaBfh7mVKRk' },
+            'ireallywanttostayatyourhouse': { name: 'I Really Want to Stay At Your House', id: '11sZ26OGW9uj4nlC_UE60s1rAXVBbito9' },
+            'GeorgeKarizakisNoRiderSystem': { name: 'No Rider System', id: '1HaEAkYRxaqDj0lOfKU2kvo_mvgR--xEP' },
+            'volcano': { name: 'Volcano', id: '1CAUSEH21amtLshMXng58UOJW2XtZ1dlm' },
+            'TRUSTLAST': { name: 'TRUSTLAST', id: '1NfaAveIVgDLfa-Gksw1iRRB5LwDPCWxm' },
+            'Cherryish': { name: 'Cherryish', id: '1R7rwX8DnSto6b5oFDeWTARMW09KRduLb' },
+            'TsumitoBatsutoAngura': { name: 'Tsumi to Batsu to Angura', id: '1LWgG0WUyHdoEmqHY4hmYsNygB3Mj-sg9' },
+            'Kaibutsu': { name: 'Kaibutsu', id: '1YAoc5sQZbJfkEpF5pvo8crgkfj93TCpa' },
+            'GenesisofAquarion': { name: 'Genesis of Aquarion', id: '1o87_CbEdNXAgngoqzofCZkD7fHIqpDYv' },
+            'OneLastKiss': { name: 'One Last Kiss', id: '1E-RNORXjX2wVjV2Vn0AU9V_lflytfytm' }
+        };
+        // listmusicnum สำหรับสุ่ม
+        const musicKeys = Object.keys(musicData); 
+
+        let currentTrackKey = null;
+        let isPlaying = false;
+        let isLooping = false;
+        let previousVolume = 0.5;
+
+        // DOM Elements
+        const audioPlayer = document.getElementById('audio-source');
+        const playerImg = document.getElementById('player-img');
+        const playerTitle = document.getElementById('player-title');
+        const btnPlayPause = document.getElementById('btn-play-pause');
+        const playIcon = document.getElementById('play-icon');
+        const btnLoop = document.getElementById('btn-loop');
+        const btnShuffle = document.getElementById('btn-shuffle');
+        const btnMute = document.getElementById('btn-mute');
+        const volumeIcon = document.getElementById('volume-icon');
+        const volumeBar = document.getElementById('volume-bar');
+        const progressBar = document.getElementById('progress-bar');
+        const progressFill = document.getElementById('progress-fill');
+        const currentTimeText = document.getElementById('current-time-text');
+        const durationTimeText = document.getElementById('duration-time-text');
+        const musicCards = document.querySelectorAll('.music-card');
         
-        for(var name in listmusic){
-            var id = listmusic[name];
-            var vid = listvideo[name];
-            if(namemusic == name){
-                fetch("https://www.googleapis.com/drive/v3/files/" + id + "?alt=media&key=GOOGLE_DRIVE_KEY")
-                .then(response => response.blob())
-                .then(blob => ChangeBlob(blob))
-                function ChangeBlob(blob){
-                  const url = URL.createObjectURL(blob);
-                  changeaudio.src = url;
-                  changeaudio.play();
+        // Modal elements
+        const btnInfoModal = document.getElementById('btn-info-modal');
+        const infoModal = document.getElementById('info-modal');
+        const btnCloseModal = document.getElementById('btn-close-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        // Initialization & Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // ตั้งค่าเริ่มต้น
+            audioPlayer.volume = previousVolume;
+            volumeBar.value = previousVolume;
+
+            // Event Listener สำหรับการ์ดเพลง
+            musicCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const musicKey = card.getAttribute('data-music-id');
+                    loadAndPlayTrack(musicKey);
+                });
+            });
+
+            // Player Controls Events
+            btnPlayPause.addEventListener('click', togglePlayPause);
+            btnLoop.addEventListener('click', toggleLoop);
+            btnShuffle.addEventListener('click', playRandomTrack);
+            btnMute.addEventListener('click', toggleMute);
+            volumeBar.addEventListener('input', handleVolumeChange);
+            
+            // Progress Bar Events
+            audioPlayer.addEventListener('timeupdate', updateProgressUI);
+            audioPlayer.addEventListener('loadedmetadata', () => {
+                durationTimeText.textContent = formatTime(audioPlayer.duration);
+                progressBar.max = audioPlayer.duration;
+            });
+            // เมื่อเพลงจบ
+            audioPlayer.addEventListener('ended', () => {
+                if (!isLooping) {
+                    // ถ้าไม่ได้วนซ้ำ ให้ปุ่มกลับเป็น Play
+                    playIcon.classList.remove('fa-pause', 'ml-0');
+                    playIcon.classList.add('fa-play', 'ml-1');
+                    isPlaying = false;
+                    progressBar.value = 0;
+                    progressFill.style.width = '0%';
                 }
-                playicon.className = "fa-sharp fa-soild fa-circle-pause pad p-active p-size";
-                changeimg.src = "img/music/" + namemusic + ".jpg";
-                changeimgsm.src = "img/music/" + namemusic + ".jpg";
-                musicname.innerHTML = listname[name]
-                video.src = "https://www.youtube.com/embed/"+ vid +"?autoplay=1&mute=1&controls=0";
-                volume.value = defaultvolume;
-                changeaudio.volume = defaultvolume / 100;
+                // ถ้า Loop อยู่ มันจะเล่นเองอัตโนมัติ
+            });
+
+            // Seek (ลากแถบเวลา)
+            progressBar.addEventListener('input', () => {
+                audioPlayer.currentTime = progressBar.value;
+                updateProgressUI(); // อัปเดตทันทีตอนลาก
+            });
+
+            // Modal Events
+            btnInfoModal.addEventListener('click', () => {
+                infoModal.classList.remove('hidden');
+                setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+            });
+            btnCloseModal.addEventListener('click', closeModal);
+            infoModal.addEventListener('click', (e) => {
+                if (e.target === infoModal) closeModal();
+            });
+
+        });
+
+        // Core Functions
+
+        async function loadAndPlayTrack(key) {
+            if (!musicData[key]) return;
+
+            currentTrackKey = key;
+            const track = musicData[key];
+
+            // อัปเดต UI ทันที
+            playerTitle.textContent = track.name;
+            playerImg.src = `./assets/imgs/music/${key}.jpg`;
+            
+            // Reset Progress
+            progressBar.value = 0;
+            progressFill.style.width = '0%';
+            currentTimeText.textContent = "0:00";
+            durationTimeText.textContent = "Loading...";
+
+            // เปลี่ยนปุ่มเป็น Loading ชั่วคราว (optional)
+            playIcon.classList.remove('fa-play', 'fa-pause', 'ml-1', 'ml-0');
+            playIcon.classList.add('fa-spinner', 'fa-spin');
+
+
+            try {
+                // Fetch ไฟล์เสียงจาก API
+                const response = await fetch(`${API_BASE_URL}${track.id}`);
+                if (!response.ok) throw new Error("Network response was not ok");
+                const blob = await response.blob();
+                const audioUrl = URL.createObjectURL(blob);
+
+                // ตั้งค่า Source และเล่น
+                audioPlayer.src = audioUrl;
+                audioPlayer.play();
+                
+                // อัปเดตสถานะปุ่ม Play
+                isPlaying = true;
+                updatePlayPauseIcon();
+
+            } catch (error) {
+                console.error("Error loading track:", error);
+                playerTitle.textContent = "Error loading track";
+                // กลับไปเป็นปุ่ม Play ถ้า error
+                isPlaying = false;
+                updatePlayPauseIcon();
             }
         }
-        
-      }
-      // Playeaudio
-      function playaudio(){
-        // ChangeIcon
-        var playicon = document.getElementById('playpause-icon');
-        var audio = document.getElementById('music');
 
-        // PlayAudio
-        if(playicon.className == "fa-sharp fa-soild fa-circle-play pad p-active p-size"){
-            audio.play();
-            playicon.className = "fa-sharp fa-soild fa-circle-pause pad p-active p-size";
-        }
-        else if(playicon.className == "fa-sharp fa-soild fa-circle-pause pad p-active p-size"){
-            audio.pause();
-            playicon.className = "fa-sharp fa-soild fa-circle-play pad p-active p-size";
-        }
-        // Default Volume
-        audio.volume = defaultvolume / 100;
-      }
-      // Volume
-      function volume(){
-        var audio = document.getElementById('music');
-        var volume = document.getElementById('volume');
-        
-        audio.volume = volume.value / 100;
-      }
-      // Mute
-      function mute(){
-      var audio = document.getElementById('music');
-      var volume = document.getElementById('volume');
-      var volumeicon = document.getElementById('volumemute-icon');
+        function togglePlayPause() {
+            if (!audioPlayer.src || audioPlayer.src === "") return;
 
-      if(volumeicon.className == "fa-solid fa-volume pad-v"){
-          audio.volume = 0;
-          volume.value = 0;
-          volumeicon.className = "fa-solid fa-volume-xmark pad-v";
-      }else if(volumeicon.className == "fa-solid fa-volume-xmark pad-v"){
-          volume.value = defaultvolume;
-          audio.volume = volume.value / 100;
-          volumeicon.className = "fa-solid fa-volume pad-v";
-      }
-      }
-      // Loop
-      function loop(){
-        var audio = document.getElementById('music');
-        var loopicon = document.getElementById('repeat-icon');
-        
-        if(loopicon.className == "fa-sharp fa-solid fa-repeat pad"){
-            audio.loop = true;
-            loopicon.className = "fa-sharp fa-solid fa-repeat-1 pad p-active";
-        }else if(loopicon.className == "fa-sharp fa-solid fa-repeat-1 pad p-active"){
-            audio.loop = false;
-            loopicon.className = "fa-sharp fa-solid fa-repeat pad";
-        }
-      }
-      // Slide
-      function slide(){
-        var audio = document.getElementById('music');
-        var slide = document.getElementById('current-time');
-
-        audio.currentTime = slide.value;
-      }
-      // Forward
-      function forward(){
-        var audio = document.getElementById('music');
-        var forwardicon = document.getElementById('forward-icon');
-
-      }
-      // Back
-      function back(){
-        var audio = document.getElementById('music');
-        var backicon = document.getElementById('back-icon');
-
-      }
-      // TrackTime
-      function updateTrackTime(track){
-      var currTimeDiv = document.getElementById('currentTime');
-      var durationDiv = document.getElementById('duration');
-      var audio = document.getElementById('music');
-
-      // CurrentTimeAndDuration
-      var currTime = Math.floor(track.currentTime); 
-      var duration = Math.floor(track.duration);
-
-      // PlaySlide
-      currTimeDiv.innerHTML = formatSecondsAsTime(currTime);
-      document.getElementById('current-time').max = duration;
-      document.getElementById('current-time').value = currTime;
-
-      // CheckLoopChangeIcon
-      if(currTime == duration && audio.loop == false){
-          var playicon = document.getElementById('playpause-icon');
-          playicon.className = "fa-sharp fa-soild fa-circle-play pad p-active p-size";
-          audio.pause();
-          audio.currentTime = 0;
-      }else if(currTime == 0 && audio.loop == true){
-          var playicon = document.getElementById('playpause-icon');
-          playicon.className = "fa-sharp fa-soild fa-circle-pause pad p-active p-size";
-      }
-
-      // CheckTime
-      if (isNaN(duration)){
-        durationDiv.innerHTML = '00:00';
-      } 
-      else{
-        durationDiv.innerHTML = formatSecondsAsTime(duration);
-      }
-      }
-      // FormatTime
-      function formatSecondsAsTime(secs, format) {
-        var hr  = Math.floor(secs / 3600);
-        var min = Math.floor((secs - (hr * 3600))/60);
-        var sec = Math.floor(secs - (hr * 3600) -  (min * 60));
-
-        if (min < 10){ 
-            min = "0" + min; 
-        }
-        if (sec < 10){ 
-            sec  = "0" + sec;
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                isPlaying = true;
+            } else {
+                audioPlayer.pause();
+                isPlaying = false;
+            }
+            updatePlayPauseIcon();
         }
 
-        return min + ':' + sec;
-      }
+        function updatePlayPauseIcon() {
+            // ลบ icon loading ถ้ามี
+            playIcon.classList.remove('fa-spinner', 'fa-spin');
+            
+            if (isPlaying) {
+                playIcon.classList.remove('fa-play', 'ml-1');
+                playIcon.classList.add('fa-pause', 'ml-0');
+            } else {
+                playIcon.classList.remove('fa-pause', 'ml-0');
+                playIcon.classList.add('fa-play', 'ml-1');
+            }
+        }
+
+        function toggleLoop() {
+            isLooping = !isLooping;
+            audioPlayer.loop = isLooping;
+            
+            // เปลี่ยนสีปุ่มเมื่อ active
+            if (isLooping) {
+                btnLoop.classList.remove('text-gray-400');
+                btnLoop.classList.add('text-wowred');
+            } else {
+                btnLoop.classList.remove('text-wowred');
+                btnLoop.classList.add('text-gray-400');
+            }
+        }
+
+        function playRandomTrack() {
+             // สุ่ม key จาก array
+            const randomIndex = Math.floor(Math.random() * musicKeys.length);
+            const randomKey = musicKeys[randomIndex];
+            loadAndPlayTrack(randomKey);
+        }
+
+        function handleVolumeChange() {
+            audioPlayer.volume = volumeBar.value;
+            updateVolumeIcon();
+        }
+
+        function toggleMute() {
+            if (audioPlayer.volume > 0) {
+                previousVolume = audioPlayer.volume;
+                audioPlayer.volume = 0;
+                volumeBar.value = 0;
+            } else {
+                audioPlayer.volume = previousVolume > 0 ? previousVolume : 0.5;
+                volumeBar.value = audioPlayer.volume;
+            }
+            updateVolumeIcon();
+        }
+
+        function updateVolumeIcon() {
+            volumeIcon.className = 'fa-solid text-lg w-6';
+            if (audioPlayer.volume === 0) {
+                volumeIcon.classList.add('fa-volume-xmark');
+            } else if (audioPlayer.volume < 0.5) {
+                volumeIcon.classList.add('fa-volume-low');
+            } else {
+                volumeIcon.classList.add('fa-volume-high');
+            }
+        }
+
+        function updateProgressUI() {
+            const current = audioPlayer.currentTime;
+            const duration = audioPlayer.duration || 0;
+
+            // อัปเดตตัวเลขเวลา
+            currentTimeText.textContent = formatTime(current);
+            
+            // อัปเดตแถบเลื่อน
+            progressBar.value = current;
+            
+            // คำนวณ % สำหรับแถบสี (Progress Fill)
+            const percent = (current / duration) * 100 || 0;
+            progressFill.style.width = `${percent}%`;
+        }
+
+        // Helper Functions
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? '0' + sec : sec}`;
+        }
+
+        function closeModal() {
+             modalContent.classList.add('scale-95');
+             setTimeout(() => {
+                 infoModal.classList.add('hidden');
+             }, 150); // รอ animation จบ
+        }
     </script>
 </body>
 </html>
