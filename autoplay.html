@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon/icon.png" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function testauto(){
+            var audio = document.getElementById("audio");
+            var video = document.getElementById("video");
+            audio.currentTime = 60;
+            video.src = "https://www.youtube.com/embed/Zhx1n6uvgUE?autoplay=1&mute=1&controls=0&start=" + audio.currentTime;
+            audio.play();
+        }
+    </script>
+    <button onclick="testauto();">111</button>
+    <video id="audio" controls>
+        <source src="https://docs.google.com/uc?export=download&id=185pFuejPuQnO-CVF9vAmFdaBfh7mVKRk" type="">
+    </video>
+    <iframe id="video" width="560" height="315" src-="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/pVEzMJshhuw?start=59&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+</html>
