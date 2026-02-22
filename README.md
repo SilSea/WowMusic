@@ -1,11 +1,16 @@
 # 🎵 WowMusic
 
+[![Deploy to GitHub Pages](https://github.com/SilSea/WowMusic/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/SilSea/WowMusic/actions)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](#)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](#)
+[![Font Awesome](https://img.shields.io/badge/Font_Awesome-%23538DD7.svg?style=flat&logo=fontawesome&logoColor=white)](#)
+
 **YouTube Music-inspired Web Player**
 A freshman-year project featuring custom UI design and seamless audio streaming integrated with Google Drive storage.
 
 โปรเจกต์ Web Application สำหรับสตรีมมิ่งเพลงที่ได้แรงบันดาลใจจาก YouTube Music พัฒนาขึ้นด้วยสถาปัตยกรรมแบบ Frontend ล้วน (Vanilla JavaScript) เน้นการออกแบบ UI ที่สวยงาม ทันสมัย และตอบสนองต่อผู้ใช้งาน (Interactive) พร้อมระบบเล่นเพลงที่เชื่อมต่อกับระบบจัดเก็บข้อมูลบน Google Drive ผ่าน API
 
-## <label style="color:red;">***เป็นโปรเจคเพื่อศึกษาการดึงข้อมูลผ่าน API***</label>
+## 💡***เป็นโปรเจคเพื่อศึกษาการดึงข้อมูลผ่าน API***💡
 
 <img src="./assets/imgs/readme/homepage.png" alt="WowMusic Screenshot" width="">
 
