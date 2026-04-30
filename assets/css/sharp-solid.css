@@ -1,0 +1,14 @@
+/*!
+ * Font Awesome Sharp Solid - Local Fallback
+ * Maps fa-sharp fa-solid to the standard Font Awesome 6 Free Solid font
+ * so that sharp-style class names render correctly without Pro CDN.
+ */
+:root {
+    --fa-style-family-sharp: "Font Awesome 6 Free";
+    --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Free";
+}
+
+.fa-sharp {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900;
+}

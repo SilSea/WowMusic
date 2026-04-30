@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="th" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WOWMusic</title>
     <link rel="icon" href="./assets/imgs/icon/icon.png" type="image/x-icon">
-    
+
     <script src="./assets/js/tailwindcss_3.4.17.js"></script>
     <script>
         tailwind.config = {
@@ -23,8 +24,8 @@
         }
     </script>
 
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/sharp-solid.css">
 
     <style type="text/tailwindcss">
         @layer utilities {
@@ -49,9 +50,13 @@
         }
     </style>
 </head>
-<body class="bg-wowdark text-gray-200 font-sans pb-28"> <nav class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
+
+<body class="bg-wowdark text-gray-200 font-sans pb-28">
+    <nav
+        class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
         <a href="#" class="flex items-center space-x-2 group">
-            <img src="./assets/imgs/icon/icon.png" alt="WOWMusic" class="h-8 w-8 transition-transform group-hover:rotate-12">
+            <img src="./assets/imgs/icon/icon.png" alt="WOWMusic"
+                class="h-8 w-8 transition-transform group-hover:rotate-12">
             <span class="font-bold text-xl tracking-wider text-white"><span class="text-wowred">WOW</span>Music</span>
         </a>
 
@@ -60,98 +65,156 @@
                 <i class="fa-sharp fa-solid fa-house text-xl"></i>
             </a>
             <button id="btn-info-modal" class="text-gray-400 hover:text-white transition-colors" title="ข้อมูลผู้จัดทำ">
-                 <i class="fa-solid fa-user text-xl"></i>
+                <i class="fa-solid fa-user text-xl"></i>
             </button>
         </div>
     </nav>
 
     <main class="container mx-auto px-4 py-8 max-w-screen-xl">
         <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-wowred pl-3">เพลงแนะนำ</h2>
-        
+
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="m87">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="m87">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/m87.jpg" alt="M87" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg transform scale-90 group-hover:scale-100 transition-transform"></i>
+                    <img src="./assets/imgs/music/m87.jpg" alt="M87"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg transform scale-90 group-hover:scale-100 transition-transform"></i>
                     </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">M87</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
 
-            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="ireallywanttostayatyourhouse">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="ireallywanttostayatyourhouse">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/ireallywanttostayatyourhouse.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/ireallywanttostayatyourhouse.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">I Really Want to Stay...</h3>
                 <p class="text-sm text-gray-400 truncate">Cyberpunk</p>
             </div>
 
-            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="GeorgeKarizakisNoRiderSystem">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="GeorgeKarizakisNoRiderSystem">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/GeorgeKarizakisNoRiderSystem.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/GeorgeKarizakisNoRiderSystem.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">No Rider System</h3>
                 <p class="text-sm text-gray-400 truncate">George Karizakis</p>
             </div>
 
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="volcano">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="volcano">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/volcano.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/volcano.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">Volcano</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
 
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="TRUSTLAST">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="TRUSTLAST">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/TRUSTLAST.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/TRUSTLAST.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">TRUSTLAST</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
-            
-            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="Cherryish">
+
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="Cherryish">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/Cherryish.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/Cherryish.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">Cherryish</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="TsumitoBatsutoAngura">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="TsumitoBatsutoAngura">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/TsumitoBatsutoAngura.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/TsumitoBatsutoAngura.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">Tsumi to Batsu to Angura</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="Kaibutsu">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="Kaibutsu">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/Kaibutsu.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/Kaibutsu.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">Kaibutsu</h3>
                 <p class="text-sm text-gray-400 truncate">YOASOBI</p>
             </div>
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="GenesisofAquarion">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="GenesisofAquarion">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/GenesisofAquarion.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/GenesisofAquarion.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">Genesis of Aquarion</h3>
                 <p class="text-sm text-gray-400 truncate">Artist Name</p>
             </div>
-             <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out" data-music-id="OneLastKiss">
+            <div class="music-card group cursor-pointer bg-wowpanel p-4 rounded-xl hover:bg-wowhover transition-all duration-300 ease-in-out"
+                data-music-id="OneLastKiss">
                 <div class="relative overflow-hidden rounded-lg shadow-lg aspect-square mb-4">
-                    <img src="./assets/imgs/music/OneLastKiss.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i></div>
+                    <img src="./assets/imgs/music/OneLastKiss.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i
+                            class="fa-solid fa-circle-play text-5xl text-wowred drop-shadow-lg scale-90 group-hover:scale-100 transition-transform"></i>
+                    </div>
                 </div>
                 <h3 class="text-white font-semibold truncate">One Last Kiss</h3>
                 <p class="text-sm text-gray-400 truncate">Utada Hikaru</p>
@@ -159,14 +222,17 @@
         </div>
     </main>
 
-    <div class="fixed bottom-0 left-0 right-0 bg-[#181818] border-t border-[#282828] px-4 py-3 flex items-center justify-between z-50 h-24">
-        
+    <div
+        class="fixed bottom-0 left-0 right-0 bg-[#181818] border-t border-[#282828] px-4 py-3 flex items-center justify-between z-50 h-24">
+
         <audio id="audio-source" preload="metadata"></audio>
 
         <div class="flex items-center w-1/4 min-w-[140px] mr-2">
-            <img id="player-img" src="./assets/imgs/icon/icon.png" alt="Cover" class="h-14 w-14 rounded shadow-lg object-cover hidden sm:block">
+            <img id="player-img" src="./assets/imgs/icon/icon.png" alt="Cover"
+                class="h-14 w-14 rounded shadow-lg object-cover hidden sm:block">
             <div class="ml-0 sm:ml-4 overflow-hidden">
-                <h4 id="player-title" class="text-white font-semibold text-sm truncate hover:underline cursor-pointer">เลือกเพลงเพื่อเล่น</h4>
+                <h4 id="player-title" class="text-white font-semibold text-sm truncate hover:underline cursor-pointer">
+                    เลือกเพลงเพื่อเล่น</h4>
                 <p id="player-artist" class="text-gray-400 text-xs truncate hover:underline cursor-pointer">WOWMusic</p>
             </div>
         </div>
@@ -177,13 +243,14 @@
                     <i class="fa-solid fa-shuffle text-lg"></i>
                 </button>
                 <button class="text-gray-300 hover:text-white transition-colors hidden md:block">
-                     <i class="fa-solid fa-backward-step text-xl"></i>
+                    <i class="fa-solid fa-backward-step text-xl"></i>
                 </button>
-                <button id="btn-play-pause" class="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center hover:scale-105 transition-transform">
+                <button id="btn-play-pause"
+                    class="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center hover:scale-105 transition-transform">
                     <i id="play-icon" class="fa-solid fa-play ml-1 text-xl"></i> </button>
-                 <button class="text-gray-300 hover:text-white transition-colors hidden md:block">
+                <button class="text-gray-300 hover:text-white transition-colors hidden md:block">
                     <i class="fa-solid fa-forward-step text-xl"></i>
-               </button>
+                </button>
                 <button id="btn-loop" class="text-gray-400 hover:text-white transition-colors" title="เล่นซ้ำ">
                     <i class="fa-solid fa-repeat text-lg"></i>
                 </button>
@@ -192,10 +259,13 @@
             <div class="w-full flex items-center space-x-3 text-xs text-gray-400">
                 <span id="current-time-text">0:00</span>
                 <div class="relative w-full h-1 group">
-                     <input type="range" id="progress-bar" class="absolute inset-0 w-full h-1 opacity-0 cursor-pointer z-10" value="0" step="0.1">
-                     <div class="w-full h-1 bg-gray-600 rounded-full overflow-hidden">
-                         <div id="progress-fill" class="h-full bg-wowred w-0 transition-all duration-100 ease-linear group-hover:bg-red-500"></div>
-                     </div>
+                    <input type="range" id="progress-bar"
+                        class="absolute inset-0 w-full h-1 opacity-0 cursor-pointer z-10" value="0" step="0.1">
+                    <div class="w-full h-1 bg-gray-600 rounded-full overflow-hidden">
+                        <div id="progress-fill"
+                            class="h-full bg-wowred w-0 transition-all duration-100 ease-linear group-hover:bg-red-500">
+                        </div>
+                    </div>
                 </div>
                 <span id="duration-time-text">0:00</span>
             </div>
@@ -205,30 +275,41 @@
             <button id="btn-mute" class="text-gray-400 hover:text-white transition-colors" title="ปิดเสียง">
                 <i id="volume-icon" class="fa-solid fa-volume-high text-lg w-6"></i>
             </button>
-            <input type="range" id="volume-bar" class="w-20 md:w-28 accent-wowred" min="0" max="1" step="0.01" value="0.5">
+            <input type="range" id="volume-bar" class="w-20 md:w-28 accent-wowred" min="0" max="1" step="0.01"
+                value="0.5">
         </div>
 
     </div>
 
-    <div id="info-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-wowpanel rounded-2xl border border-white/10 p-6 w-full max-w-md text-center shadow-2xl transform transition-all scale-95" id="modal-content">
+    <div id="info-modal"
+        class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-wowpanel rounded-2xl border border-white/10 p-6 w-full max-w-md text-center shadow-2xl transform transition-all scale-95"
+            id="modal-content">
             <h3 class="text-2xl font-bold text-white mb-4">จัดทำโดย</h3>
             <div class="mb-6">
-                <img src="./assets/imgs/profile/profile.jpg" alt="Logo" class="w-20 h-20 mx-auto mb-4 rounded-full shadow-lg border-2 border-wowred">
+                <img src="./assets/imgs/profile/profile.jpg" alt="Logo"
+                    class="w-20 h-20 mx-auto mb-4 rounded-full shadow-lg border-2 border-wowred">
                 <p class="text-lg text-white font-medium">นายณัฐวุฒิ พูลเขตต์</p>
             </div>
             <div class="flex justify-center space-x-6 text-2xl mb-8">
-                <a href="https://github.com/SilSea" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/silsea_nut/" target="_blank" class="text-gray-400 hover:text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://web.facebook.com/NattawutPoolkhet" target="_blank" class="text-gray-400 hover:text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/SilSea" target="_blank"
+                    class="text-gray-400 hover:text-white hover:scale-110 transition"><i
+                        class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/silsea_nut/" target="_blank"
+                    class="text-gray-400 hover:text-pink-500 hover:scale-110 transition"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://web.facebook.com/NattawutPoolkhet" target="_blank"
+                    class="text-gray-400 hover:text-blue-500 hover:scale-110 transition"><i
+                        class="fa-brands fa-facebook"></i></a>
             </div>
-            <button id="btn-close-modal" class="bg-wowred hover:bg-red-700 text-white px-6 py-2 rounded-full font-semibold transition-colors w-full">ปิดหน้าต่าง</button>
+            <button id="btn-close-modal"
+                class="bg-wowred hover:bg-red-700 text-white px-6 py-2 rounded-full font-semibold transition-colors w-full">ปิดหน้าต่าง</button>
         </div>
     </div>
 
     <script>
         // Data & State
-        const API_BASE_URL = 'https://api.kumaisekai.online/api/audio/';
+        const API_BASE_URL = 'https://api.kumaisekai.online/api/audio/'
 
         // ข้อมูลเพลง
         const musicData = {
@@ -244,7 +325,7 @@
             'OneLastKiss': { name: 'One Last Kiss', id: '1E-RNORXjX2wVjV2Vn0AU9V_lflytfytm' }
         };
         // listmusicnum สำหรับสุ่ม
-        const musicKeys = Object.keys(musicData); 
+        const musicKeys = Object.keys(musicData);
 
         let currentTrackKey = null;
         let isPlaying = false;
@@ -267,7 +348,7 @@
         const currentTimeText = document.getElementById('current-time-text');
         const durationTimeText = document.getElementById('duration-time-text');
         const musicCards = document.querySelectorAll('.music-card');
-        
+
         // Modal elements
         const btnInfoModal = document.getElementById('btn-info-modal');
         const infoModal = document.getElementById('info-modal');
@@ -294,7 +375,7 @@
             btnShuffle.addEventListener('click', playRandomTrack);
             btnMute.addEventListener('click', toggleMute);
             volumeBar.addEventListener('input', handleVolumeChange);
-            
+
             // Progress Bar Events
             audioPlayer.addEventListener('timeupdate', updateProgressUI);
             audioPlayer.addEventListener('loadedmetadata', () => {
@@ -343,7 +424,7 @@
             // อัปเดต UI ทันที
             playerTitle.textContent = track.name;
             playerImg.src = `./assets/imgs/music/${key}.jpg`;
-            
+
             // Reset Progress
             progressBar.value = 0;
             progressFill.style.width = '0%';
@@ -365,7 +446,7 @@
                 // ตั้งค่า Source และเล่น
                 audioPlayer.src = audioUrl;
                 audioPlayer.play();
-                
+
                 // อัปเดตสถานะปุ่ม Play
                 isPlaying = true;
                 updatePlayPauseIcon();
@@ -395,7 +476,7 @@
         function updatePlayPauseIcon() {
             // ลบ icon loading ถ้ามี
             playIcon.classList.remove('fa-spinner', 'fa-spin');
-            
+
             if (isPlaying) {
                 playIcon.classList.remove('fa-play', 'ml-1');
                 playIcon.classList.add('fa-pause', 'ml-0');
@@ -408,7 +489,7 @@
         function toggleLoop() {
             isLooping = !isLooping;
             audioPlayer.loop = isLooping;
-            
+
             // เปลี่ยนสีปุ่มเมื่อ active
             if (isLooping) {
                 btnLoop.classList.remove('text-gray-400');
@@ -420,7 +501,7 @@
         }
 
         function playRandomTrack() {
-             // สุ่ม key จาก array
+            // สุ่ม key จาก array
             const randomIndex = Math.floor(Math.random() * musicKeys.length);
             const randomKey = musicKeys[randomIndex];
             loadAndPlayTrack(randomKey);
@@ -460,10 +541,10 @@
 
             // อัปเดตตัวเลขเวลา
             currentTimeText.textContent = formatTime(current);
-            
+
             // อัปเดตแถบเลื่อน
             progressBar.value = current;
-            
+
             // คำนวณ % สำหรับแถบสี (Progress Fill)
             const percent = (current / duration) * 100 || 0;
             progressFill.style.width = `${percent}%`;
@@ -478,11 +559,12 @@
         }
 
         function closeModal() {
-             modalContent.classList.add('scale-95');
-             setTimeout(() => {
-                 infoModal.classList.add('hidden');
-             }, 150); // รอ animation จบ
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                infoModal.classList.add('hidden');
+            }, 150); // รอ animation จบ
         }
     </script>
 </body>
+
 </html>
